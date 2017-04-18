@@ -1,11 +1,10 @@
-package sample;
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -29,32 +28,16 @@ public class Main extends Application {
 
         scene.setFill(Color.GREEN);
 
-        final Line face1 = new Line();
-        face1.setStartX(MARGIN);
-        face1.setStartY(MARGIN);
-        face1.setEndX(BOT_MARGIN + MARGIN);
-        face1.setEndY(SCENE_HEIGHT - MARGIN);
-        face1.setStroke(Color.RED);
-        face1.setStrokeWidth(LINE_WIDTH);
-        root.getChildren().add(face1);
-
-        final Line face2 = new Line();
-        face2.setStartX(BOT_MARGIN + MARGIN);
-        face2.setStartY(SCENE_HEIGHT - MARGIN);
-        face2.setEndX(BOT_WIDTH + BOT_MARGIN + MARGIN);
-        face2.setEndY(SCENE_HEIGHT - MARGIN);
-        face2.setStroke(Color.RED);
-        face2.setStrokeWidth(LINE_WIDTH);
-        root.getChildren().add(face2);
-
-        final Line face3 = new Line();
-        face3.setStartX(BOT_WIDTH + BOT_MARGIN + MARGIN);
-        face3.setStartY(SCENE_HEIGHT - MARGIN);
-        face3.setEndX(BOT_WIDTH + 2 * BOT_MARGIN);
-        face3.setEndY(MARGIN);
-        face3.setStroke(Color.RED);
-        face3.setStrokeWidth(LINE_WIDTH);
-        root.getChildren().add(face3);
+        Polyline face = new Polyline();
+        face.getPoints().addAll(
+                MARGIN,                     MARGIN,
+                BOT_MARGIN + MARGIN,             SCENE_HEIGHT - MARGIN,
+                BOT_WIDTH + BOT_MARGIN + MARGIN, SCENE_HEIGHT - MARGIN,
+                BOT_WIDTH + 2 * BOT_MARGIN,      MARGIN
+        );
+        face.setStroke(Color.RED);
+        face.setStrokeWidth(LINE_WIDTH);
+        root.getChildren().add(face);
 
         final Line eye1 = new Line();
         final double endEye1X = MARGIN + EYE_WIDTH;
